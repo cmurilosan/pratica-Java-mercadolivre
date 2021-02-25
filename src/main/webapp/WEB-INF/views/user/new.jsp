@@ -1,3 +1,5 @@
+<%-- View --%>
+
 <form action="/user" method="post">
 
     <input name="login">
