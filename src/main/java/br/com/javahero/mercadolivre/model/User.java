@@ -4,14 +4,14 @@ import java.time.LocalDateTime;
 // Model
 public class User {
 
-    private LocalDateTime dataCriacao;
+    private LocalDateTime createdAt;
     private String email;
-    private String senha;
+    private String password;
 
-    public User(String email, String senha) {
+    public User(String email, String password) {
         this.email = email;
-        this.senha = senha;
-        this.dataCriacao = LocalDateTime.now();
+        this.password = password;
+        this.createdAt = LocalDateTime.now();
     }
 
 }
