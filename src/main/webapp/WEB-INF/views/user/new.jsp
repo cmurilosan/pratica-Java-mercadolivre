@@ -1,5 +1,3 @@
-<%-- View --%>
-
 <form action="/user" method="post">
 
     <div>
