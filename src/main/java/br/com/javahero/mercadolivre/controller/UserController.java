@@ -1,10 +1,12 @@
 package br.com.javahero.mercadolivre.controller;
 
-import br.com.javahero.mercadolivre.model.User;
+import br.com.javahero.mercadolivre.dto.UserForm;
 import br.com.javahero.mercadolivre.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class UserController {
@@ -20,9 +22,8 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public String newUser(String login, String password) {
-        User user = new User(login, password);
-        this.userRepository.save(user);
+    public String newUser(@Valid UserForm userForm) {
+        this.userRepository.save(userForm.toEntity());
         return "user/created";
     }
 }
