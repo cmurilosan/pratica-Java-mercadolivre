@@ -23,4 +23,6 @@ public class User {
         this.password = password;
         this.createdAt = LocalDateTime.now();
     }
+
+
 }
