@@ -2,18 +2,15 @@ package br.com.javahero.mercadolivre.dto;
 
 import br.com.javahero.mercadolivre.model.User;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 public class UserForm {
 
-    @NotNull
-    @NotEmpty
+    @NotBlank
     @Email
     private String login;
-    @NotEmpty
+
+    @NotBlank
     @Min(6)
     private String password;
 
@@ -21,4 +18,11 @@ public class UserForm {
         return new User(login, password);
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }
