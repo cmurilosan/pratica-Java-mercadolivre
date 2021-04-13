@@ -4,6 +4,7 @@ import br.com.javahero.mercadolivre.dto.UserForm;
 import br.com.javahero.mercadolivre.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -24,6 +25,10 @@ public class UserController {
 
     @PostMapping("/user")
     public String newUser(@Valid UserForm userForm, BindingResult bindingResult) {
+        if(userRepository.existsByEmail(userForm.getLogin())) {
+            bindingResult.addError(new FieldError("userForm", "login",
+                    "Email duplicado"));
+        }
         if(bindingResult.hasErrors()) {
             System.out.println(bindingResult.getAllErrors());
             return "user/new";
